@@ -11,7 +11,7 @@ class teamContainer extends Component {
 
     render() {
         return (
-            <User user={this.props.currentUser} history={this.props.history} />
+            <Players player={this.props.players} history={this.props.history} />
         )
     }
 }
