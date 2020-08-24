@@ -10,6 +10,7 @@ export const leagueData = () => {
 //figuring out this api
 
     return{
+        leagueData
     
 
     }
