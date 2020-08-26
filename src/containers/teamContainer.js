@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import User from '../components/User.js';
+import Player from '../components/User.js';
 import { loadingUserInfo } from '../actions/userActions.js'
 
 class teamContainer extends Component {
@@ -11,7 +11,7 @@ class teamContainer extends Component {
 
     render() {
         return (
-            <Players player={this.props.players} history={this.props.history} />
+            <Player player={this.props.players} history={this.props.history} />
         )
     }
 }

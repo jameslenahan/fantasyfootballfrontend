@@ -1,5 +1,6 @@
 import { resetSignupForm } from './signupForm.js'
 import { resetLoginForm } from './loginForm.js'
+const HEROKU_URL = 'https://limitless-woodland-46121.herokuapp.com'
 export const setCurrentUser = user => {
     return {
         type: 'SET_CURRENT_USER',
@@ -16,7 +17,7 @@ export const clearCurrentUser = () => {
 
 export const signup = (userData, history) => {
     //console.log("action", userData)
-    const HEROKU_URL = ''
+
     // process.env.REACT_APP_HEROKU
     return dispatch => {
         return fetch(`${HEROKU_URL}/api/v1/signup`, {
@@ -35,7 +36,7 @@ export const signup = (userData, history) => {
                 } else {
                     dispatch(setCurrentUser(user))
                     dispatch(resetSignupForm())
-                    history.push('/songs')
+                    history.push('/players')
                 }
 
             })
@@ -44,7 +45,6 @@ export const signup = (userData, history) => {
 
 
 export const login = (userData, history) => {
-    const HEROKU_URL = ''
     return dispatch => {
         return fetch(`${HEROKU_URL}/api/v1/login`, {
             credentials: 'include',
@@ -61,14 +61,13 @@ export const login = (userData, history) => {
                 } else {
                     dispatch(setCurrentUser(user))
                     dispatch(resetLoginForm())
-                    history.push('/songs')
+                    history.push('/players')
                 }
             })
     }
 }
 
 export const getCurrentUser = () => {
-    const HEROKU_URL = ''
     return dispatch => {
         return fetch(`${HEROKU_URL}/api/v1/get_current_user`, {
             credentials: "include",
@@ -86,7 +85,6 @@ export const getCurrentUser = () => {
 }
 
 export const logout = (event) => {
-    const HEROKU_URL = ''
     return dispatch => {
         dispatch(clearCurrentUser)
         return fetch(`${HEROKU_URL}/api/v1/logout`, {

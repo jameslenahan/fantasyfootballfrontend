@@ -24,7 +24,6 @@ class App extends Component {
 
                 <div className="App">
                     <Switch>
-                        <ProtectedRoute exact path='/logout' component={Logout}/>
                         <ProtectedRoute exact path='/myaccount' component={UserContainer} />
 
                         <Route exact path='/' render={() => <Home loggedin={this.props.loggedin} />}/>
