@@ -6,7 +6,7 @@ import NavBar from './components/NavBar.js';
 import Login from './components/Login.js';
 import Logout from './components/Logout.js';
 import Signup from './components/Signup.js';
-import Players from './components/Players.js';
+import teamContainer from './containers/teamContainer.js';
 import { getCurrentUser } from './actions/currentUsers.js';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import UserContainer from './containers/UserContainer.js';
@@ -31,7 +31,7 @@ class App extends Component {
                         <Route exact path='/' render={() => <Home loggedin={this.props.loggedin} />}/>
                         <Route exact path='/login' component={Login} />
                         <Route exact path='/signup' component={Signup} />
-                        <Route exact path='/players' component={Players} />
+                        <Route exact path='/players' component={teamContainer} />
                     </Switch>
                 </div>
             </Router>

@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Player from '../components/User.js';
-import { loadingUserInfo } from '../actions/userActions.js'
+import Players from '../components/Players.js';
+import { fetchPlayers } from '../actions/playersActions.js';
+
 
 class teamContainer extends Component {
-
     componentDidMount(){
-        this.props.loadingUserInfo(this.props.currentUser.id)
+        this.props.fetchPlayers()
     }
 
     render() {
         return (
-            <Player player={this.props.players} history={this.props.history} />
+            <div>
+                <Players players={this.props.players} history={this.props.history} />
+            </div>
         )
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        currentUser: state.currentUsersReducer,
-    }
-}
 
-export default connect(mapStateToProps, { loadingUserInfo })(teamContainer);
+export default connect((state)=>({players: state.playersReducer.players}), { fetchPlayers })(teamContainer)
