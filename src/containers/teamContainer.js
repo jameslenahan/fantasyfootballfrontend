@@ -10,6 +10,7 @@ class teamContainer extends Component {
     }
 
     render() {
+
         return (
             <div>
                 <Players players={this.props.players} history={this.props.history} />

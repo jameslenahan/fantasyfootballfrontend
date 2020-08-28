@@ -1,10 +1,10 @@
 
-//export const uploadingFavorite = songs => {
-  //  return {
-    //    type: 'UPLOADING_FAVORITE',
-      //  payload: songs
-    //}
-//}
+export const uploadingFavorite = players => {
+    return {
+        type: 'UPLOADING_FAVORITE',
+        payload: players
+    }
+}
 const HEROKU_URL = 'https://limitless-woodland-46121.herokuapp.com'
 // My account page
 export const loadingUserInfo = (currentUserId) => {
@@ -21,7 +21,7 @@ export const loadingUserInfo = (currentUserId) => {
         })
             .then(resp => resp.json())
             .then(userData => {console.log("userData", userData)
-              // players?  dispatch(uploadingFavorite((userData.songs)))
+              dispatch(uploadingFavorite((userData.songs)))
             })
 
     }

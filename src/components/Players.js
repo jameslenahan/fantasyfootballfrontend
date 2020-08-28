@@ -32,7 +32,6 @@ class Players extends Component {
     }
 
     render() {
-        console.log(this.props.players)
         return(
 
             <div className="Players">
@@ -45,11 +44,9 @@ class Players extends Component {
                 </form>
 
             <GridList cols={2}>
-                {this.props.players!== null ? this.props.players.map(player => <GridListTile key={player.rating}><GridListTileBar title={player.name}  actionIcon={
-                <IconButton onClick={() => this.handleClick(player.playerId, this.props.history)}>
+                {this.props.players!== null ? this.props.players.map(player => <GridListTile key={player.rating}>
                     <MoreHorizIcon style={{color: "#FCF3F3"}}/>
-                </IconButton>
-                }                  /></GridListTile>) : <p>No player found. Please try with another keyword.</p>}
+                    }               /></GridListTile>) : <p>No player found</p>}
             </GridList>
         </div>
 
