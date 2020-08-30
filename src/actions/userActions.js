@@ -5,7 +5,8 @@ export const uploadingFavorite = players => {
         payload: players
     }
 }
-const HEROKU_URL = 'https://limitless-woodland-46121.herokuapp.com'
+//const HEROKU_URL = 'https://limitless-woodland-46121.herokuapp.com'
+const HEROKU_URL = 'http://localhost:3000'
 // My account page
 export const loadingUserInfo = (currentUserId) => {
     //const HEROKU_URL = process.env.REACT_APP_HEROKU
@@ -20,7 +21,7 @@ export const loadingUserInfo = (currentUserId) => {
             },
         })
             .then(resp => resp.json())
-            .then(userData => {console.log("userData", userData)
+            .then(userData => {
               dispatch(uploadingFavorite((userData.songs)))
             })
 

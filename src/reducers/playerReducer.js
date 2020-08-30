@@ -1,6 +1,8 @@
 export default (state = {
     player: null,
-    favorite: 0
+    favorite: 0,
+    reviews: [],
+    review: ""
 }, action) => {
     switch(action.type) {
         case 'UPLOADING_PLAYER':

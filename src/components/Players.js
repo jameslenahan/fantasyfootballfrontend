@@ -43,12 +43,14 @@ class Players extends Component {
                     <input type="submit" value="Add" className="btn btn-full" style={{marginLeft: "15px"}}/>
                 </form>
 
-            <GridList cols={2}>
-                {this.props.players!== null ? this.props.players.map(player => <GridListTile key={player.rating}>
-                    <MoreHorizIcon style={{color: "#FCF3F3"}}/>
-                    }               /></GridListTile>) : <p>No player found</p>}
-            </GridList>
-        </div>
+                <GridList cols={2}>
+                    {this.props.players!== null ? this.props.players.map(player => <GridListTile key={player.playerId}><GridListTileBar title={player.name}  actionIcon={
+                        <IconButton onClick={() => this.handleClick(player.playerId, this.props.history)}>
+                            <MoreHorizIcon style={{color: "#FCF3F3"}}/>
+                        </IconButton>
+                    }                   /></GridListTile>) : <p>No player found. Please try with another keyword.</p>}
+                </GridList>
+            </div>
 
 
 

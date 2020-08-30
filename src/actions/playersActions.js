@@ -14,27 +14,28 @@ export const resetPlayers = () => {
 export const sendingPlayers = players => {
     let playerData;
 
-
     if (players.length === 0) {
         playerData = null
     }
 
     else {
 
-        playerData = players.forEach(player => {
+        playerData = players.map(player => {
+            console.log("player, ", player)
                 return {
 
                     name: player.player_name,
-                    playerId: player.team
+                    playerId: 1
                 }
             }
 
 
         )
     }
+
     return {
 
-        type: 'FETCH_PLAYER',
+        type: 'FETCH_PLAYERS',
         payload: playerData
     }
 }
@@ -48,7 +49,7 @@ export const fetchPlayers = () => {
     }
 }
 
-export const searchPlayers = () => {
+export const searchPlayers = state => {
     return (dispatch) => {
         fetch(`https://www.fantasyfootballdatapros.com/api/players/2019/all`)
             .then(resp => resp.json())

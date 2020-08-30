@@ -1,6 +1,7 @@
 import { resetSignupForm } from './signupForm.js'
 import { resetLoginForm } from './loginForm.js'
-const HEROKU_URL = 'https://limitless-woodland-46121.herokuapp.com'
+//const HEROKU_URL = 'https://limitless-woodland-46121.herokuapp.com'
+const HEROKU_URL = 'http://localhost:3000'
 export const setCurrentUser = user => {
     return {
         type: 'SET_CURRENT_USER',
