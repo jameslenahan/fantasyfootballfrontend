@@ -26,6 +26,7 @@ export default (state = {
         case 'DISPLAY_REVIEW':
             return {...state, review: action.payload}
 
+
         default:
             return state
     }

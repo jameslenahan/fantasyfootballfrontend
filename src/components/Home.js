@@ -8,7 +8,7 @@ class Home extends React.Component {
         return(
             <div className="Home">
                 <h1>Fantasy Football Player Rankings</h1>
-                <h3>Find out which players to start!</h3>
+                <h3>Choose which players to start!</h3>
                 {renderBtn}
             </div>
         )

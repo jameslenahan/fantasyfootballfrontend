@@ -22,7 +22,7 @@ export const loadingUserInfo = (currentUserId) => {
         })
             .then(resp => resp.json())
             .then(userData => {
-              dispatch(uploadingFavorite((userData.songs)))
+              dispatch(uploadingFavorite((userData.players)))
             })
 
     }

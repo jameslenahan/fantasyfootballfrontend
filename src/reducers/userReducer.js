@@ -1,5 +1,5 @@
 export default (state = {
-    songs: []
+    players: []
 }, action) => {
     switch (action.type) {
         case 'UPLOADING_FAVORITE':

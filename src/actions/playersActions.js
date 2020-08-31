@@ -18,14 +18,16 @@ export const sendingPlayers = players => {
         playerData = null
     }
 
+
     else {
-
+        let x = 1
         playerData = players.map(player => {
-            console.log("player, ", player)
-                return {
 
-                    name: player.player_name,
-                    playerId: 1
+            return {
+
+                name: player.player_name,
+                rating: player.projection,
+                playerId: x++
                 }
             }
 
@@ -56,3 +58,19 @@ export const searchPlayers = state => {
             .then(playerGroup => dispatch(sendingPlayers((playerGroup))))
     }
 }
+
+export const playerSort = players => {
+    const playerData = players.map(player => {
+        const playerNames = player.name
+            playerNames.sort(function (a, b) {
+                    return a.name - b.name;
+
+                }
+            )
+        console.log(playerData)
+        }
+
+    )
+}
+
+// go back through React documentation, "Thinking in React", "Conditional Rendering" <Will be quizzed on this, class & functional components

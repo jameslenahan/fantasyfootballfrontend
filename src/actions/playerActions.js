@@ -1,14 +1,13 @@
 //const HEROKU_URL = 'https://limitless-woodland-46121.herokuapp.com'
 const HEROKU_URL = 'http://localhost:3000'
-const player_id = (Math.floor((Math.random() * 100) +1))
 export const sendingPlayerDetails = player => {
-    const playerData = {
+    let x = 0
+     const playerData =  {
 
-        name: player.name,
-        rating: player.rating,
+         name: player[x].player_name,
+         rating: player[x].projection
+     }
 
-
-    }
     return {
         type: 'UPLOADING_PLAYER',
         payload: playerData
@@ -54,18 +53,18 @@ export const playerShow = ( apiId, history) => {
         fetch(`https://www.fantasyfootballdatapros.com/api/projections`)
             .then(resp => resp.json())
             .then(player => {
-                dispatch(sendingPlayerDetails((player)))
 
-                history.push(`/players/${player_id}`)
+                dispatch(sendingPlayerDetails(player))
+                history.push(`/players/${player.id}`)
             })
     }
 }
 export const clickLike = (player, userId, review) => {
     return (dispatch) => {
-        const dataForRails = {
+        const apiData = {
             name: player.name,
             rating: player.rating,
-            api_id: player_id,
+            api_id: player.playerId,
             favorite: {like: true, review: review,user_id: userId}
         }
         return fetch(`${HEROKU_URL}/api/v1/players` ,{
@@ -74,7 +73,7 @@ export const clickLike = (player, userId, review) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(dataForRails)
+            body: JSON.stringify(apiData)
         })
             .then(resp => resp.json())
             .then(player => {
@@ -99,11 +98,11 @@ export const loadingFavorite = (apiId) => {
             .then(players => {
                 players.map(player => {
                     if (player.api_id === apiId) {
-                        const numberOfLikes = player.favorites.filter(fav => fav.like).length
+                        const numberOfLikes = player.favorite.filter(fav => fav.like).length
 
                         let reviewArray = [];
 
-                        player.favorites.forEach(fav => {
+                        player.favorite.forEach(fav => {
                             reviewArray.push({review: fav.review, username: fav.user_name})
                         })
 
