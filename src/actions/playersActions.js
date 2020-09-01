@@ -73,4 +73,4 @@ export const playerSort = players => {
     )
 }
 
-// go back through React documentation, "Thinking in React", "Conditional Rendering" <Will be quizzed on this, class & functional components
+// go back through React documentation, "Thinking in React", "Conditional Rendering" <Will be quizzed on this, class & functional components""
