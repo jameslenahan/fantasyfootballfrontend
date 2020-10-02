@@ -12,6 +12,8 @@ export default (state = {
 
         case 'RESET_PLAYERS':
             return {loading: false, players: null}
+        case 'FETCH_SORTED_PLAYERS':
+            return {loading: false, players: action.payload}
 
         default:
             return state

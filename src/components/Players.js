@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchPlayers, playerSort} from '../actions/playersActions.js';
+import { searchPlayers} from '../actions/playersActions.js';
 import { playerShow, resetFavorite } from '../actions/playerActions.js'
 import TextField from '@material-ui/core/TextField';
 import GridList from '@material-ui/core/GridList';
@@ -8,6 +8,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+
 
 class Players extends Component {
     state = {
@@ -32,7 +33,23 @@ class Players extends Component {
         this.props.playerShow(apiId, history)
     }
     handleSortClick = (player) => {
-        this.props.playerSort(player)
+        let playerInfo = player.slice();
+        const sortedPlayerNames = playerInfo.sort(function (a, b) {
+                if (a.name < b.name) {
+                    return -1;
+                }
+                if (a.name > b.name) {
+                    return 1;
+                }
+                return 0;
+
+            }
+
+        )
+
+        this.setState({sortedPlayerNames})
+
+        // this.forceUpdate();
     }
 
     render() {
@@ -40,9 +57,9 @@ class Players extends Component {
 
             <div className="Players">
                 <h1 style={{color: "#f9f3fc"}}>Player Search</h1>
-
+ 
                 <button
-                    onClick={() => this. handleSortClick(this.props.players)}
+                    onClick={() => this.handleSortClick(this.props.players)}
                     class="button"> Sort </button>
                 <form onSubmit={this.handleSubmit} style={{margin: "6% auto"}}>
 
@@ -51,12 +68,20 @@ class Players extends Component {
                 </form>
 
                 <GridList cols={2}>
-                    {this.props.players!== null ? this.props.players.map(player => <GridListTile key={player.playerId}><GridListTileBar title={player.name}  actionIcon={
+                    {this.state.sortedPlayerNames!== null ?   this.props.players.map(player => <GridListTile key={player.playerId}><GridListTileBar title={player.name} actionicon={
+                        // this.props.players!== null ?
                         <IconButton
                             onClick={() => this.handleClick((player.playerId), this.props.history)}>
                             <MoreHorizIcon style={{color: "#FCF3F3"}}/>
                         </IconButton>
-                    }                   /></GridListTile>) : <p>No player found. Please try with another keyword.</p>}
+                    }                   /></GridListTile>) :
+                        this.props.players.map(player => <GridListTile key={player.playerId}><GridListTileBar title={player.name}  actionIcon={
+                                // this.props.players!== null ?
+                                <IconButton
+                                    onClick={() => this.handleClick((player.playerId), this.props.history)}>
+                                    <MoreHorizIcon style={{color: "#FCF3F3"}}/>
+                                </IconButton>
+                            }
                 </GridList>
             </div>
 
@@ -65,4 +90,6 @@ class Players extends Component {
         )
     }
 }
-export default connect(null, { searchPlayers, playerShow, resetFavorite, playerSort})(Players);
+export default connect(null, { searchPlayers, playerShow, resetFavorite})(Players);
+
+            // do the exercise < bookmarked,  use prettier or beautifier, auto formatter

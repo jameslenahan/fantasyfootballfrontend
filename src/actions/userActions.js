@@ -10,7 +10,6 @@ const HEROKU_URL = 'http://localhost:3000'
 // My account page
 export const loadingUserInfo = (currentUserId) => {
     //const HEROKU_URL = process.env.REACT_APP_HEROKU
-    console.log(currentUserId)
 
     return (dispatch) => {
         return fetch(`${HEROKU_URL}/api/v1/users/${currentUserId}` ,{

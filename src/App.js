@@ -19,7 +19,6 @@ class App extends Component {
     componentDidMount(){
         this.props.getCurrentUser()
     }
-
     render() {
         return (
             <Router>
@@ -27,7 +26,7 @@ class App extends Component {
 
                 <div className="App">
                     <Switch>
-                        <ProtectedRoute eact path='/logout' component={Logout}/>
+                        <ProtectedRoute exact path='/logout' component={Logout}/>
                         <ProtectedRoute exact path='/myaccount' component={UserContainer} />
                         <ProtectedRoute exact path='/players' component={teamContainer} />
                         <ProtectedRoute exact path='/players/:id' component={Player} />

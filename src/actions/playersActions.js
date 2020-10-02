@@ -59,18 +59,5 @@ export const searchPlayers = state => {
     }
 }
 
-export const playerSort = players => {
-    const playerData = players.map(player => {
-        const playerNames = player.name
-            playerNames.sort(function (a, b) {
-                    return a.name - b.name;
 
-                }
-            )
-        console.log(playerData)
-        }
 
-    )
-}
-
-// go back through React documentation, "Thinking in React", "Conditional Rendering" <Will be quizzed on this, class & functional components""
